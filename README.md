@@ -5,7 +5,7 @@ list of commands run/packages installed in terminal:
     4 (installed CSS loaders) npm install --save-dev style-loader css-loader
     *5 (install it if images are referenced directly in HTML file) npm install --save-dev html-loader*
     6 (installed webpack dev server): npm install --save-dev webpack-dev-server
-    *7 run npm install to automatically install same dependencies as in template-repo*
+    7 run npm install to automatically install same dependencies as in template-repo
     *8 (once git push origin main has been run once):
         git branch gh-pages
         --don't forget to switch source branch to this in github pages*
