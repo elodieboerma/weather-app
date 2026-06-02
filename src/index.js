@@ -51,9 +51,9 @@ function useLocation() {
   return data;
 }
 
-function processData() {
-  const data = useLocation();
-  const weatherData = data.parse();
+async function processData() {
+  const data = await useLocation();
+  const weatherData = JSON.parse(data);
   return weatherData;
 }
 
