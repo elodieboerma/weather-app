@@ -1,6 +1,37 @@
 import "./styles.css";
+const button = document.getElementById("selectLocation");
 
 
+
+function getLocation(onSubmit) {
+
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const form = document.createElement("form");
+        form.id = "locationForm";
+
+        const label = document.createElement("label");
+        label.for = "locationInput";
+        label.textContent = "Enter location: ";
+        const input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "locationInput");
+        input.setAttribute("placeHolder", "Dallas, TX");
+        label.appendChild(input);
+
+        const submit = document.createElement("input");
+        submit.setAttribute("type", "submit");
+        submit.textContent = "Set location";
+        
+        form.append(label,submit);
+        document.body.appendChild(form);
+
+        onSubmit(input.value);
+
+        form.remove();
+        });
+}
 
 
 
@@ -20,7 +51,9 @@ async function askForData(location) {
 
 
 function useLocation() {
-    // location from dynamic form
+    const location = getLocation((location) => {
+        console.log(location);
+    });
     const data = askForData(location)
     return data;
 }
