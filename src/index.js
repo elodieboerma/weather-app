@@ -3,6 +3,14 @@ import { getLocation } from "./displayDom.js";
 
 
 
+const button = document.getElementById("selectLocation");
+
+button.addEventListener("click", (event) => {
+  event.preventDefault();
+  getLocation();
+});
+
+
 async function askForData(location) {
   try {
     const link = 

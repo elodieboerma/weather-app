@@ -1,42 +1,33 @@
 import "./styles.css";
 //import { chooseData } from "./index.js";
 
-
-
 export function getLocation() {
-    return new Promise((resolve) => {
-        const button = document.getElementById("selectLocation");
+  return new Promise((resolve) => {
+    const form = document.createElement("form");
+    form.id = "locationForm";
 
-        button.addEventListener("click", (event) => {
-            event.preventDefault();
+    const label = document.createElement("label");
+    label.setAttribute("for", "locationInput");
+    label.textContent = "Enter location: ";
+    const input = document.createElement("input");
+    input.type = "text";
+    input.id = "locationInput";
+    input.placeholder = "Dallas, TX";
+    label.appendChild(input);
 
-            const form = document.createElement("form");
-            form.id = "locationForm";
+    const submit = document.createElement("input");
+    submit.type = "submit";
+    submit.textContent = "Set location";
 
-            const label = document.createElement("label");
-            label.setAttribute("for","locationInput");
-            label.textContent = "Enter location: ";
-            const input = document.createElement("input");
-            input.type = "text";
-            input.id = "locationInput";
-            input.placeholder = "Dallas, TX";
-            label.appendChild(input);
+    form.append(label, submit);
+    document.body.appendChild(form);
 
-            const submit = document.createElement("input");
-            submit.type = "submit";
-            submit.textContent = "Set location";
+    submit.addEventListener("click", (event) => {
+      event.preventDefault();
 
-            form.append(label, submit);
-            document.body.appendChild(form);
+      resolve(input.value);
 
-            submit.addEventListener("click", (event) => {
-                event.preventDefault();
-
-                resolve(input.value);
-
-                form.remove();
-            });
-
-        });
+      form.remove();
     });
+  });
 }
