@@ -1,5 +1,5 @@
 import "./styles.css";
-//import { chooseData } from "./index.js";
+import { processChosenData } from "./index.js";
 
 export function getLocation() {
   return new Promise((resolve) => {
@@ -30,4 +30,12 @@ export function getLocation() {
       form.remove();
     });
   });
+}
+
+// need to fix
+export async function displayData() {
+  const dataText = await processChosenData();
+  const div = document.createElement("div");
+  div.textContent = dataText;
+  document.body.appendChild(div);
 }
