@@ -27,10 +27,14 @@ function getLocation(onSubmit) {
     form.append(label, submit);
     document.body.appendChild(form);
 
-    //submit
-    onSubmit(input.value);
+    submit.addEventListener("click", (event) => {
+      event.preventDefault();
 
-    form.remove();
+      onSubmit(input.value);
+
+      form.remove();
+    });
+
   });
 }
 
@@ -61,10 +65,8 @@ async function processData() {
 
 async function chooseData() {
   const fullData = await processData();
-  console.log(fullData);
 
   const forecastDescrip = fullData.description;
-  console.log(forecastDescrip);
 
   const temp = fullData.days[0].temp;
   const minTemp = fullData.days[0].tempmin;
@@ -109,3 +111,4 @@ async function chooseData() {
 
 const chosenData = chooseData();
 console.log(chosenData);
+console.log(chosenData.temp);
