@@ -4,14 +4,14 @@ import { getLocation } from "./displayDom.js";
 
 
 async function askForData(location) {
-  //try {
-  const link = 
+  try {
+    const link = 
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=Z2DU46G98V6KDED84PT8KUMZF`;
-  const response = await fetch(link);
-  /*} catch (err) {
+    const response = await fetch(link);
+    return response;
+  } catch (err) {
         console.log("error: " + err);
-    });*/
-  return response;
+  }
 }
 
 
@@ -76,4 +76,3 @@ async function chooseData() {
 
 const chosenData = await chooseData();
 console.log(chosenData);
-console.log(chosenData.temp);
