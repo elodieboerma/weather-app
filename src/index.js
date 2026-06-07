@@ -1,12 +1,12 @@
 import "./styles.css";
-import { getLocation } from "./displayDom";
+import { getLocation } from "./displayDom.js";
 
 
 
 async function askForData(location) {
   //try {
-  const link = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/
-        ${location}?key=Z2DU46G98V6KDED84PT8KUMZF`;
+  const link = 
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=Z2DU46G98V6KDED84PT8KUMZF`;
   const response = await fetch(link);
   const data = await response.json();
   /*} catch (err) {
@@ -18,24 +18,17 @@ async function askForData(location) {
 
 
 async function useLocation() {
-  /*const location = await getLocation((location) => {
-    console.log(location);
-  });
-  const data = await askForData(location);*/
-  const data = await getLocation((location) => {
-    const result = askForData(location);
-    //something(result);
-    
-  });
-  //return data;
+  const location = await getLocation();
+  const data = await askForData(location);
+  return data;
 }
 
 
 
-/*async function processData() {
+async function processData() {
   const data = await useLocation();
   return data;
-}*/
+}
 
 
 

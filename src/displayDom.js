@@ -1,37 +1,41 @@
 import "./styles.css";
 
-export function getLocation(onSubmit) {
-  const button = document.getElementById("selectLocation");
 
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
 
-    const form = document.createElement("form");
-    form.id = "locationForm";
+export function getLocation() {
+    return new Promise((resolve) => {
+        const button = document.getElementById("selectLocation");
 
-    const label = document.createElement("label");
-    label.setAttribute("for","locationInput");
-    label.textContent = "Enter location: ";
-    const input = document.createElement("input");
-    input.type = "text";
-    input.id = "locationInput";
-    input.setAttribute("placeHolder", "Dallas, TX");
-    label.appendChild(input);
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
 
-    const submit = document.createElement("input");
-    submit.type = "submit";
-    submit.textContent = "Set location";
+            const form = document.createElement("form");
+            form.id = "locationForm";
 
-    form.append(label, submit);
-    document.body.appendChild(form);
+            const label = document.createElement("label");
+            label.setAttribute("for","locationInput");
+            label.textContent = "Enter location: ";
+            const input = document.createElement("input");
+            input.type = "text";
+            input.id = "locationInput";
+            input.setAttribute("placeHolder", "Dallas, TX");
+            label.appendChild(input);
 
-    submit.addEventListener("click", (event) => {
-      event.preventDefault();
+            const submit = document.createElement("input");
+            submit.type = "submit";
+            submit.textContent = "Set location";
 
-      onSubmit(input.value);
+            form.append(label, submit);
+            document.body.appendChild(form);
 
-      form.remove();
+            submit.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                resolve(input.value);
+
+                form.remove();
+            });
+
+        });
     });
-
-  });
 }
