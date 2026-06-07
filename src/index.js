@@ -16,9 +16,10 @@ async function askForData(location) {
 
 
 
-async function useLocation() {
+async function processData() {
   const location = await getLocation();
   const response = await askForData(location);
+
   const data = await response.json();
   return data;
 }
@@ -26,8 +27,7 @@ async function useLocation() {
 
 
 async function chooseData() {
-  //const fullData = await processData();
-  const fullData = await useLocation();
+  const fullData = await processData();
 
   const forecastDescrip = fullData.description;
 
