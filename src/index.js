@@ -1,42 +1,7 @@
 import "./styles.css";
+import { getLocation } from "./displayDom";
 
 
-
-function getLocation(onSubmit) {
-  const button = document.getElementById("selectLocation");
-
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const form = document.createElement("form");
-    form.id = "locationForm";
-
-    const label = document.createElement("label");
-    label.setAttribute("for","locationInput");
-    label.textContent = "Enter location: ";
-    const input = document.createElement("input");
-    input.type = "text";
-    input.id = "locationInput";
-    input.setAttribute("placeHolder", "Dallas, TX");
-    label.appendChild(input);
-
-    const submit = document.createElement("input");
-    submit.type = "submit";
-    submit.textContent = "Set location";
-
-    form.append(label, submit);
-    document.body.appendChild(form);
-
-    submit.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      onSubmit(input.value);
-
-      form.remove();
-    });
-
-  });
-}
 
 async function askForData(location) {
   //try {
@@ -50,21 +15,29 @@ async function askForData(location) {
   return data;
 }
 
+
+
 async function useLocation() {
   /*const location = await getLocation((location) => {
     console.log(location);
   });
   const data = await askForData(location);*/
   const data = await getLocation((location) => {
-    return askForData(location);
+    const result = askForData(location);
+    //something(result);
+    
   });
-  return data;
+  //return data;
 }
 
-async function processData() {
+
+
+/*async function processData() {
   const data = await useLocation();
   return data;
-}
+}*/
+
+
 
 async function chooseData() {
   const fullData = await processData();
@@ -111,6 +84,8 @@ async function chooseData() {
 
   return neededData;
 }
+
+
 
 const chosenData = chooseData();
 console.log(chosenData);
