@@ -1,8 +1,6 @@
 import "./styles.css";
 import { getLocation } from "./displayDom.js";
 
-
-
 const button = document.getElementById("selectLocation");
 
 button.addEventListener("click", (event) => {
@@ -10,19 +8,15 @@ button.addEventListener("click", (event) => {
   getLocation();
 });
 
-
 async function askForData(location) {
   try {
-    const link = 
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=Z2DU46G98V6KDED84PT8KUMZF`;
+    const link = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=Z2DU46G98V6KDED84PT8KUMZF`;
     const response = await fetch(link);
     return response;
   } catch (err) {
-        console.log("error: " + err);
+    console.log("error: " + err);
   }
 }
-
-
 
 async function processData() {
   const location = await getLocation();
@@ -31,8 +25,6 @@ async function processData() {
   const data = await response.json();
   return data;
 }
-
-
 
 async function chooseData() {
   const fullData = await processData();
@@ -79,7 +71,6 @@ async function chooseData() {
 
   return neededData;
 }
-
 
 const chosenData = await chooseData();
 const dataText = JSON.stringify(chosenData);

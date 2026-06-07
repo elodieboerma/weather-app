@@ -1,7 +1,7 @@
 This project is a weather app that shows the current weather of a specified location. It's meant to help me use my new skills with promises and async/await, using APIs, linting (ESLint and Prettier), and JavaScript form validation.
 
 Packages:
-    *5 (install it if images are referenced directly in HTML file) npm install --save-dev html-loader*
+_5 (install it if images are referenced directly in HTML file) npm install --save-dev html-loader_
 
     *10 (to run ESLint on any file or directory): npx eslint yourfile.js*
 
