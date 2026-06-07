@@ -1,7 +1,10 @@
 import "./styles.css";
-const button = document.getElementById("selectLocation");
+
+
 
 function getLocation(onSubmit) {
+  const button = document.getElementById("selectLocation");
+
   button.addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -9,21 +12,22 @@ function getLocation(onSubmit) {
     form.id = "locationForm";
 
     const label = document.createElement("label");
-    label.for = "locationInput";
+    label.setAttribute("for","locationInput");
     label.textContent = "Enter location: ";
     const input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.setAttribute("id", "locationInput");
+    input.type = "text";
+    input.id = "locationInput";
     input.setAttribute("placeHolder", "Dallas, TX");
     label.appendChild(input);
 
     const submit = document.createElement("input");
-    submit.setAttribute("type", "submit");
+    submit.type = "submit";
     submit.textContent = "Set location";
 
     form.append(label, submit);
     document.body.appendChild(form);
 
+    //submit
     onSubmit(input.value);
 
     form.remove();
@@ -36,31 +40,31 @@ async function askForData(location) {
         ${location}?key=Z2DU46G98V6KDED84PT8KUMZF`;
   const response = await fetch(link);
   const data = await response.json();
-  console.log(data);
   /*} catch (err) {
         console.log("error: " + err);
     });*/
   return data;
 }
 
-function useLocation() {
+async function useLocation() {
   const location = getLocation((location) => {
     console.log(location);
   });
-  const data = askForData(location);
+  const data = await askForData(location);
   return data;
 }
 
 async function processData() {
   const data = await useLocation();
-  const weatherData = JSON.parse(data);
-  return weatherData;
+  return data;
 }
 
-function chooseData() {
-  const fullData = processData();
+async function chooseData() {
+  const fullData = await processData();
+  console.log(fullData);
 
   const forecastDescrip = fullData.description;
+  console.log(forecastDescrip);
 
   const temp = fullData.days[0].temp;
   const minTemp = fullData.days[0].tempmin;
