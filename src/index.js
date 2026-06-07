@@ -8,32 +8,26 @@ async function askForData(location) {
   const link = 
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=Z2DU46G98V6KDED84PT8KUMZF`;
   const response = await fetch(link);
-  const data = await response.json();
   /*} catch (err) {
         console.log("error: " + err);
     });*/
-  return data;
+  return response;
 }
 
 
 
 async function useLocation() {
   const location = await getLocation();
-  const data = await askForData(location);
-  return data;
-}
-
-
-
-async function processData() {
-  const data = await useLocation();
+  const response = await askForData(location);
+  const data = await response.json();
   return data;
 }
 
 
 
 async function chooseData() {
-  const fullData = await processData();
+  //const fullData = await processData();
+  const fullData = await useLocation();
 
   const forecastDescrip = fullData.description;
 
@@ -80,6 +74,6 @@ async function chooseData() {
 
 
 
-const chosenData = chooseData();
+const chosenData = await chooseData();
 console.log(chosenData);
 console.log(chosenData.temp);
