@@ -73,6 +73,8 @@ async function chooseData() {
 }
 
 
-
 const chosenData = await chooseData();
-console.log(chosenData);
+const dataText = JSON.stringify(chosenData);
+const div = document.createElement("div");
+div.textContent = dataText;
+document.body.appendChild(div);
