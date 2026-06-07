@@ -51,10 +51,13 @@ async function askForData(location) {
 }
 
 async function useLocation() {
-  const location = getLocation((location) => {
+  /*const location = await getLocation((location) => {
     console.log(location);
   });
-  const data = await askForData(location);
+  const data = await askForData(location);*/
+  const data = await getLocation((location) => {
+    return askForData(location);
+  });
   return data;
 }
 
