@@ -18,7 +18,7 @@ export function getLocation() {
             const input = document.createElement("input");
             input.type = "text";
             input.id = "locationInput";
-            input.setAttribute("placeHolder", "Dallas, TX");
+            input.placeholder = "Dallas, TX";
             label.appendChild(input);
 
             const submit = document.createElement("input");
