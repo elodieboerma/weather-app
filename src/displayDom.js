@@ -32,10 +32,25 @@ export function getLocation() {
   });
 }
 
-// need to fix
+function formatData(data) {
+  const dataText = `Forecast: ${data.dayDescrip} ${data.forecast}
+  Temperature: ${data.temp}°F
+  Min temp: ${data.minTemp}°F
+  Max temp: ${data.maxTemp}°F
+  Feels like: ${data.feelsLike}°F
+  Precipitation: ${data.precip} in
+  Wind gusts: ${data.windGusts} mph
+  Wind speed: ${data.windSpeed} mph
+  UV index: ${data.uvIndex}
+  Sunrise: ${data.sunrise}
+  Sunset: ${data.sunset}`;
+  return dataText;
+}
+
 export async function displayData(dataText) {
-  console.log(dataText);
+  let data = JSON.parse(dataText);
+  data = await formatData(data);
   const div = document.createElement("div");
-  div.textContent = dataText;
+  div.textContent = data;
   document.body.appendChild(div);
 }
