@@ -15,6 +15,7 @@ export function getLocation() {
     label.appendChild(input);
 
     const submit = document.createElement("input");
+    submit.id = "submit";
     submit.type = "submit";
     submit.textContent = "Set location";
 
