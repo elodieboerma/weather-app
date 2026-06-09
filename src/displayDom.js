@@ -1,5 +1,4 @@
 import "./styles.css";
-import { processChosenData } from "./index.js";
 
 export function getLocation() {
   return new Promise((resolve) => {
@@ -33,8 +32,8 @@ export function getLocation() {
 }
 
 // need to fix
-export async function displayData() {
-  const dataText = await processChosenData();
+export async function displayData(dataText) {
+  console.log(dataText);
   const div = document.createElement("div");
   div.textContent = dataText;
   document.body.appendChild(div);

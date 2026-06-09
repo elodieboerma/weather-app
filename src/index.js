@@ -1,11 +1,12 @@
 import "./styles.css";
-import { getLocation } from "./displayDom.js";
+import { getLocation, displayData } from "./displayDom.js";
 
 const button = document.getElementById("selectLocation");
 
-button.addEventListener("click", (event) => {
+button.addEventListener("click", async (event) => {
   event.preventDefault();
-  getLocation();
+  const dataText = await processChosenData();
+  displayData(dataText);
 });
 
 async function askForData(location) {
