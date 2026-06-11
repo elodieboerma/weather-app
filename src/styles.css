@@ -43,13 +43,7 @@ button,
     grid-area: 5 / 2 / 6 / 3;
 }
 
-#subheading,
-#temps,
-#precipitation,
-#winds,
-#uv,
-#sunrise,
-#sunset {
+.border {
     border: solid 10px rgb(217, 233, 247);
     border-radius: 5px;
     display: flex;
