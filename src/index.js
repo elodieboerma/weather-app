@@ -2,12 +2,48 @@ import "./styles.css";
 import { getLocation, displayData } from "./displayDom.js";
 
 const button = document.getElementById("selectLocation");
+const changeUnitsButton = document.getElementById("changeUnits");
 
 button.addEventListener("click", async (event) => {
   event.preventDefault();
   const dataText = await processChosenData();
   displayData(dataText);
 });
+
+changeUnitsButton.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const temp = document.getElementById("temp");
+  const min = document.getElementById("minTemp");
+  const max = document.getElementById("maxTemp");
+  const feelsLike = document.getElementById("feelsLike");
+  const dataNums = {
+    temp: temp,
+    min: min,
+    max: max,
+    feelsLike: feelsLike
+  };
+  if (changeUnitsButton.textContent === "Fahrenheit") {
+    changeUnitsButton.textContent = "Celsius";
+    changeToCelsius(dataNums);
+  } else {
+    changeUnitsButton.textContent = "Fahrenheit";
+    changeToFahrenheit(dataNums);
+  }
+});
+
+function changeToCelsius(dataNums) {
+  for (let [value] of Object.values(dataNums)) {
+    const celsiusEquiv = value - 32 * (5/9);
+    value = celsiusEquiv;
+  }
+}
+
+function changeToFahrenheit(dataNums) {
+  for (let [value] of Object.values(dataNums)) {
+    const fahrenheitEquiv = (value * 9/5) + 32;
+    value = fahrenheitEquiv;
+  }
+}
 
 async function askForData(location) {
   try {

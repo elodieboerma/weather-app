@@ -69,12 +69,16 @@ export async function displayData(dataText) {
   tempDescripDiv.id = "temps";
   const temp = document.createElement("p");
   temp.textContent = data.temp;
+  temp.id = "temp";
   const minTemp = document.createElement("p");
   minTemp.textContent = data.minTemp;
+  minTemp.id = "minTemp";
   const maxTemp = document.createElement("p");
   maxTemp.textContent = data.maxTemp;
+  maxTemp.id = "maxTemp";
   const feelsLike = document.createElement("p");
   feelsLike.textContent = data.feelsLike;
+  feelsLike.id = "feelsLike";
   tempDescripDiv.append(temp, minTemp, maxTemp, feelsLike);
 
   const precipationDiv = document.createElement("div");
