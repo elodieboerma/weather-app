@@ -15,6 +15,7 @@
 
 #temps {
     grid-area: 2 / 1 / 5 / 2;
+    font-size: 1.5rem;
 }
 
 #precipiation {
@@ -44,5 +45,10 @@
 #uv,
 #sunrise,
 #sunset {
-    border: solid 1px black;
+    border: solid 10px rgb(217, 233, 247);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
