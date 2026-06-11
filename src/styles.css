@@ -2,3 +2,13 @@
 #submit {
     margin: 10px;
 }
+
+#subheading,
+#temps,
+#precipitation,
+#winds,
+#uv,
+#sunrise,
+#sunset {
+    border: solid 1px black;
+}
