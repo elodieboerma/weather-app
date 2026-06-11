@@ -145,8 +145,6 @@ function alignColor(temp) {
   }
 
   for (let i = 0; i < divList.length; i++) {
-    console.log(divList[i]);
-    console.log(color);
     divList[i].style.borderColor = color;
   }
 }
