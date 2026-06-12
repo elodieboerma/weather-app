@@ -1,53 +1,53 @@
 #buttonDiv {
-    display: flex;
+  display: flex;
 }
 
 button,
 #locationForm,
 #submit {
-    margin: 10px;
+  margin: 10px;
 }
 
 #data {
-    display: grid;
-    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr;
-    gap: 1rem;
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr;
+  gap: 1rem;
 }
 
 #subheading {
-    grid-area: 1 / 1 / 2 / 3;
+  grid-area: 1 / 1 / 2 / 3;
 }
 
 #temps {
-    grid-area: 2 / 1 / 5 / 2;
-    font-size: 1.5rem;
+  grid-area: 2 / 1 / 5 / 2;
+  font-size: 1.5rem;
 }
 
 #precipiation {
-    grid-area: 2 / 2 / 3 / 3;
+  grid-area: 2 / 2 / 3 / 3;
 }
 
 #winds {
-    grid-area: 3 / 2 / 4 / 3;
+  grid-area: 3 / 2 / 4 / 3;
 }
 
 #uv {
-    grid-area: 4 / 2 / 5 / 3;
+  grid-area: 4 / 2 / 5 / 3;
 }
 
 #sunrise {
-    grid-area: 5 / 1 / 6 / 2;
+  grid-area: 5 / 1 / 6 / 2;
 }
 
 #sunset {
-    grid-area: 5 / 2 / 6 / 3;
+  grid-area: 5 / 2 / 6 / 3;
 }
 
 .border {
-    border: solid 10px rgb(217, 233, 247);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+  border: solid 10px rgb(217, 233, 247);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

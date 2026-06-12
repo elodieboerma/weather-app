@@ -49,7 +49,7 @@ function formatData(data) {
     windSpeed: `Wind speed: ${data.windSpeed} mph`,
     uvIndex: `UV index: ${data.uvIndex}`,
     sunrise: `Sunrise: ${data.sunrise}`,
-    sunset: `Sunset: ${data.sunset}`
+    sunset: `Sunset: ${data.sunset}`,
   };
   return dataText;
 }
@@ -68,7 +68,7 @@ export async function displayData(dataText) {
   today.textContent = data.today;
   const forecast = document.createElement("p");
   forecast.textContent = data.forecast;
-  subheadingDiv.append(today,forecast);
+  subheadingDiv.append(today, forecast);
 
   const tempDescripDiv = document.createElement("div");
   tempDescripDiv.id = "temps";
@@ -124,25 +124,47 @@ export async function displayData(dataText) {
   sunset.textContent = data.sunset;
   sunsetDiv.append(sunset);
 
-  div.append(subheadingDiv,tempDescripDiv, precipationDiv, windDiv, uvDiv, sunriseDiv, sunsetDiv);
+  div.append(
+    subheadingDiv,
+    tempDescripDiv,
+    precipationDiv,
+    windDiv,
+    uvDiv,
+    sunriseDiv,
+    sunsetDiv,
+  );
   document.body.appendChild(div);
   alignColor(parsedData.temp);
 }
-
 
 function alignColor(temp) {
   const divList = document.getElementsByClassName("border");
   const unit = document.getElementById("changeUnits").textContent;
   let color;
-  if (temp < 20 && unit === "Fahrenheit" || temp < -7.2 && unit === "Celsius") {
+  if (
+    (temp < 20 && unit === "Fahrenheit") ||
+    (temp < -7.2 && unit === "Celsius")
+  ) {
     color = "rgb(83, 83, 247)";
-  } else if (temp >= 20 && temp < 40 && unit === "Fahrenheit" || temp > -7.2 && temp < 4.4 && unit === "Celsius") {
+  } else if (
+    (temp >= 20 && temp < 40 && unit === "Fahrenheit") ||
+    (temp > -7.2 && temp < 4.4 && unit === "Celsius")
+  ) {
     color = "rgb(147, 243, 147)";
-  } else if (temp >= 40 && temp < 60 && unit === "Fahrenheit" || temp > 4.4 && temp < 15.5 && unit === "Celsius") {
+  } else if (
+    (temp >= 40 && temp < 60 && unit === "Fahrenheit") ||
+    (temp > 4.4 && temp < 15.5 && unit === "Celsius")
+  ) {
     color = "rgb(247, 247, 163)";
-  } else if (temp >= 60 && temp < 80 && unit === "Fahrenheit" || temp > 15.5 && temp < 26.6 && unit === "Celsius") {
+  } else if (
+    (temp >= 60 && temp < 80 && unit === "Fahrenheit") ||
+    (temp > 15.5 && temp < 26.6 && unit === "Celsius")
+  ) {
     color = "rgb(245, 200, 116)";
-  } else if (temp >= 80 && unit === "Fahrenheit" || temp > 26.6 && unit === "Celsius") {
+  } else if (
+    (temp >= 80 && unit === "Fahrenheit") ||
+    (temp > 26.6 && unit === "Celsius")
+  ) {
     color = "rgb(248, 103, 103)";
   } else {
     color = "black";

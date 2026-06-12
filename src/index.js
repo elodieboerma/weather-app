@@ -18,7 +18,7 @@ button.addEventListener("click", async (event) => {
       temp: document.getElementById("temp"),
       min: document.getElementById("minTemp"),
       max: document.getElementById("maxTemp"),
-      feelsLike: document.getElementById("feelsLike")
+      feelsLike: document.getElementById("feelsLike"),
     };
     changeToCelsius(dataNums);
   }
@@ -34,11 +34,12 @@ changeUnitsButton.addEventListener("click", (event) => {
     temp: temp,
     min: min,
     max: max,
-    feelsLike: feelsLike
+    feelsLike: feelsLike,
   };
 
   currentUnit = currentUnit === "F" ? "C" : "F";
-  changeUnitsButton.textContent = currentUnit === "F" ? "Fahrenheit" : "Celsius";
+  changeUnitsButton.textContent =
+    currentUnit === "F" ? "Fahrenheit" : "Celsius";
 
   if (dataNums.temp) {
     if (currentUnit === "C") {
@@ -53,8 +54,8 @@ function changeToCelsius(dataNums) {
   for (let element of Object.values(dataNums)) {
     const match = element.textContent.match(/\d+\.?\d*/);
     if (match) {
-      const celsiusEquiv = (parseFloat(match[0]) - 32) * (5/9);
-      element.textContent = `${element.textContent.split(':')[0]}: ${celsiusEquiv.toFixed(1)}°C`;
+      const celsiusEquiv = (parseFloat(match[0]) - 32) * (5 / 9);
+      element.textContent = `${element.textContent.split(":")[0]}: ${celsiusEquiv.toFixed(1)}°C`;
     }
   }
 }
@@ -63,8 +64,8 @@ function changeToFahrenheit(dataNums) {
   for (let element of Object.values(dataNums)) {
     const match = element.textContent.match(/\d+\.?\d*/);
     if (match) {
-      const fahrenheitEquiv = (parseFloat(match[0]) * (9/5)) + 32;
-      element.textContent = `${element.textContent.split(':')[0]}: ${fahrenheitEquiv.toFixed(1)}°F`;
+      const fahrenheitEquiv = parseFloat(match[0]) * (9 / 5) + 32;
+      element.textContent = `${element.textContent.split(":")[0]}: ${fahrenheitEquiv.toFixed(1)}°F`;
     }
   }
 }
