@@ -32,16 +32,22 @@ changeUnitsButton.addEventListener("click", async (event) => {
 });
 
 function changeToCelsius(dataNums) {
-  for (let [value] of Object.values(dataNums)) {
-    const celsiusEquiv = value - 32 * (5/9);
-    value = celsiusEquiv;
+  for (let element of Object.values(dataNums)) {
+    const match = element.textContent.match(/\d+\.?\d*/);
+    if (match) {
+      const celsiusEquiv = (parseFloat(match[0]) - 32) * (5/9);
+      element.textContent = `${element.textContent.split(':')[0]}: ${celsiusEquiv.toFixed(1)}°C`;
+    }
   }
 }
 
 function changeToFahrenheit(dataNums) {
-  for (let [value] of Object.values(dataNums)) {
-    const fahrenheitEquiv = (value * 9/5) + 32;
-    value = fahrenheitEquiv;
+  for (let element of Object.values(dataNums)) {
+    const match = element.textContent.match(/\d+\.?\d*/);
+    if (match) {
+      const fahrenheitEquiv = (parseFloat(match[0]) * (9/5)) + 32;
+      element.textContent = `${element.textContent.split(':')[0]}: ${fahrenheitEquiv.toFixed(1)}°F`;
+    }
   }
 }
 
