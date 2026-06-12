@@ -3,6 +3,7 @@ import { getLocation, displayData } from "./displayDom.js";
 
 const button = document.getElementById("selectLocation");
 const changeUnitsButton = document.getElementById("changeUnits");
+let currentUnit = "F";
 
 button.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -10,10 +11,20 @@ button.addEventListener("click", async (event) => {
   if (document.querySelector("#data")) {
     document.querySelector("#data").remove();
   }
-  displayData(dataText);
+  await displayData(dataText);
+
+  if (currentUnit === "C") {
+    const dataNums = {
+      temp: document.getElementById("temp"),
+      min: document.getElementById("minTemp"),
+      max: document.getElementById("maxTemp"),
+      feelsLike: document.getElementById("feelsLike")
+    };
+    changeToCelsius(dataNums);
+  }
 });
 
-changeUnitsButton.addEventListener("click", async (event) => {
+changeUnitsButton.addEventListener("click", (event) => {
   event.preventDefault();
   const temp = document.getElementById("temp");
   const min = document.getElementById("minTemp");
@@ -25,12 +36,16 @@ changeUnitsButton.addEventListener("click", async (event) => {
     max: max,
     feelsLike: feelsLike
   };
-  if (changeUnitsButton.textContent === "Fahrenheit") {
-    changeUnitsButton.textContent = "Celsius";
-    changeToCelsius(dataNums);
-  } else {
-    changeUnitsButton.textContent = "Fahrenheit";
-    changeToFahrenheit(dataNums);
+
+  currentUnit = currentUnit === "F" ? "C" : "F";
+  changeUnitsButton.textContent = currentUnit === "F" ? "Fahrenheit" : "Celsius";
+
+  if (dataNums.temp) {
+    if (currentUnit === "C") {
+      changeToCelsius(dataNums);
+    } else {
+      changeToFahrenheit(dataNums);
+    }
   }
 });
 
