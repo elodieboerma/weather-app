@@ -20,7 +20,11 @@ export function getLocation() {
     submit.textContent = "Set location";
 
     form.append(label, submit);
-    document.body.appendChild(form);
+    if (document.querySelector("#data")) {
+      document.body.insertBefore(form, document.querySelector("#data"));
+    } else {
+      document.body.appendChild(form);
+    }
 
     submit.addEventListener("click", (event) => {
       event.preventDefault();
