@@ -7,6 +7,9 @@ const changeUnitsButton = document.getElementById("changeUnits");
 button.addEventListener("click", async (event) => {
   event.preventDefault();
   const dataText = await processChosenData();
+  if (document.querySelector("#data")) {
+    document.querySelector("#data").remove();
+  }
   displayData(dataText);
 });
 
